@@ -3498,7 +3498,7 @@ namespace units
 	 * @sa			See unit_t for more information on unit type containers.
 	 */
 #if !defined(DISABLE_PREDEFINED_UNITS) || defined(ENABLE_PREDEFINED_SUBSTANCE_UNITS)
-	UNIT_ADD(substance, mole, moles, mol, unit<std::ratio<1>, units::category::substance_unit>)
+	UNIT_ADD_WITH_METRIC_PREFIXES(substance, mole, moles, mol, unit<std::ratio<1>, units::category::substance_unit>)
 	
 	UNIT_ADD_CATEGORY_TRAIT(substance)
 #endif
