@@ -795,6 +795,8 @@ namespace units
 		typedef base_unit<detail::meter_ratio<0>,	std::ratio<0>,	std::ratio<0>,	std::ratio<2>,	std::ratio<0>,	std::ratio<0>,	std::ratio<0>,	std::ratio<1>>						luminous_flux_unit;				///< Represents an SI derived unit of luminous flux
 		typedef base_unit<detail::meter_ratio<-2>,	std::ratio<0>,	std::ratio<0>,	std::ratio<2>,	std::ratio<0>,	std::ratio<0>,	std::ratio<0>,	std::ratio<1>>						illuminance_unit;				///< Represents an SI derived unit of illuminance
 		typedef base_unit<detail::meter_ratio<0>,	std::ratio<0>,	std::ratio<-1>>																										radioactivity_unit;				///< Represents an SI derived unit of radioactivity
+		typedef base_unit<detail::meter_ratio<0>,	std::ratio<1>,	std::ratio<0>,	std::ratio<0>,	std::ratio<0>,	std::ratio<0>,	std::ratio<-1>>										substance_mass_unit;			///< Represents an SI base unit of substance mass
+		typedef base_unit<detail::meter_ratio<-3>,	std::ratio<0>,	std::ratio<0>,	std::ratio<0>,	std::ratio<0>,	std::ratio<0>,	std::ratio<1>>										substance_concentration_unit;	///< Represents an SI base unit of substance concentration
 
 		// OTHER UNIT TYPES
 		//					METERS			KILOGRAMS		SECONDS			RADIANS			AMPERES			KELVIN			MOLE			CANDELA			BYTE		---		CATEGORY			
@@ -3501,6 +3503,44 @@ namespace units
 	UNIT_ADD_WITH_METRIC_PREFIXES(substance, mole, moles, mol, unit<std::ratio<1>, units::category::substance_unit>)
 	
 	UNIT_ADD_CATEGORY_TRAIT(substance)
+#endif
+
+	//------------------------------
+	//	UNITS OF SUBSTANCE MASS
+	//------------------------------
+
+	/**
+	 * @namespace	units::substance_mass
+	 * @brief		namespace for unit types and containers representing substance mass values
+	 * @details		The SI unit for substance mass is `kg_per_mol`, and the corresponding `base_unit` category is
+	 *				`substance_unit`.
+	 * @anchor		substanceMassContainers
+	 * @sa			See unit_t for more information on unit type containers.
+	 */
+#if !defined(DISABLE_PREDEFINED_UNITS) || defined(ENABLE_PREDEFINED_SUBSTANCE_MASS_UNITS)
+	UNIT_ADD(substance_mass, molar_mass, molar_mass, kg_per_mole, unit<std::ratio<1>, units::category::substance_mass_unit>)
+	UNIT_ADD_WITH_METRIC_PREFIXES(substance_mass, gram_per_mole, grams_per_mole, g_per_mol, unit<std::ratio<1, 1000>, molar_mass>)
+
+	UNIT_ADD_CATEGORY_TRAIT(substance_mass)
+#endif
+
+	//----------------------------------------
+	//	UNITS OF SUBSTANCE CONCENTRATION
+	//----------------------------------------
+
+	/**
+	 * @namespace	units::substance_concentration
+	 * @brief		namespace for unit types and containers representing substance concentration values
+	 * @details		The SI unit for substance mass is `mol_per_m3`, and the corresponding `base_unit` category is
+	 *				`substance_unit`.
+	 * @anchor		substanceConcentrationContainers
+	 * @sa			See unit_t for more information on unit type containers.
+	 */
+#if !defined(DISABLE_PREDEFINED_UNITS) || defined(ENABLE_PREDEFINED_SUBSTANCE_CONCENTRATION_UNITS)
+	UNIT_ADD(substance_concentration, molar_concentration, molar_concentration, mol_per_m3, unit<std::ratio<1>, units::category::substance_concentration_unit>)
+	UNIT_ADD_WITH_METRIC_PREFIXES(substance_concentration, Molar, Molars, M, unit<std::ratio<1, 1000>, molar_concentration>)
+
+	UNIT_ADD_CATEGORY_TRAIT(substance_concentration)
 #endif
 
 	//------------------------------
